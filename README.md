@@ -1,18 +1,12 @@
-- 👋 Hi, I’m Ruicheng
+#Science Fair 2022-2023 
 
-  - He/Him
-  - Be someone your younger self would look up to...
-  - Be happy :)
+-Motor_Controller
+  -Controls the 28BYJ stepper motor with the calculation of the azimuth tracking the sun
 
+-Solar_Calc
+  -Calculates the sun azimuth & altitude angle through pyephem_sunpath algorithm. 
+  
 
-- 👀 I’m interested in IT/AI/Data Collecting 
-  - Favorite Language (Python)
-
-
-- 🌱 I’m currently learning:
-  - Java 
-  - SQL
-  - HTML/JS/CSS (Getting Better...Especially JS)
 
 <!---
 ruichengrao/ruichengrao is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
