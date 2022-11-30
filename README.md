@@ -7,6 +7,14 @@
 
 - Solar_Calc
   - Calculates the sun azimuth & altitude angle through pyephem_sunpath algorithm. 
+ ```  #getting azimuth
+    tz = -4
+    global rounded_alt
+    global rounded_azm
+    alt, azm = sunpos(exact_date, lat, lon, tz, dst=False)
+    rounded_alt = round(alt,5)
+    rounded_azm = round(azm,5)
+    ```
   
 
 
