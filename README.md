@@ -17,6 +17,9 @@
     rounded_alt = round(alt,5)
     rounded_azm = round(azm,5)
 ```
+- Voltage Sensor/Detector
+  - Calculate the amout of volts that is collected from the solar panel
+  
   
 
 
