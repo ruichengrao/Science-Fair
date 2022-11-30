@@ -1,10 +1,10 @@
-#Science Fair 2022-2023 
+# Science Fair 2022-2023 
 
--Motor_Controller
-  -Controls the 28BYJ stepper motor with the calculation of the azimuth tracking the sun
+- Motor_Controller
+  - Controls the 28BYJ stepper motor with the calculation of the azimuth tracking the sun
 
--Solar_Calc
-  -Calculates the sun azimuth & altitude angle through pyephem_sunpath algorithm. 
+- Solar_Calc
+  - Calculates the sun azimuth & altitude angle through pyephem_sunpath algorithm. 
   
 
 
