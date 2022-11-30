@@ -7,7 +7,9 @@
 
 - Solar_Calc
   - Calculates the sun azimuth & altitude angle through pyephem_sunpath algorithm. 
-```  #getting azimuth
+``` 
+from pyephem_sunpath.sunpath import sunpos
+    #getting azimuth
     tz = -4
     global rounded_alt
     global rounded_azm
