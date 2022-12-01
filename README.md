@@ -2,6 +2,7 @@
 
 - Motor_Controller
   - Controls the 28BYJ stepper motor with the calculation of the azimuth tracking the sun
+ 
 ![image](https://user-images.githubusercontent.com/106492499/205093171-ddad79e5-9ba0-40dd-9b64-3a772337b538.png)
 
 - Solar_Calc
