@@ -44,10 +44,10 @@ schedule.every(5).minutes.do(motorCon)
 ### Voltage Sensor/Detector.py
   - Calculate the amout of volts that is collected from the solar panel 
   
- [Steps For Volt Sensor Setup](https://kookye.com/2017/06/01/design-a-voltmeter-with-the-raspberry-pi-board-and-voltage-sensor/)
+      #### [Steps For Volt Sensor Setup](https://kookye.com/2017/06/01/design-a-voltmeter-with-the-raspberry-pi-board-and-voltage-sensor/)
       
   
-  <img src="http://osoyoo.com/wp-content/uploads/2017/04/voltage_bb.jpg" width=40% height=40%>
+      <img src="http://osoyoo.com/wp-content/uploads/2017/04/voltage_bb.jpg" width=40% height=40%>
   
    
  ``` 
