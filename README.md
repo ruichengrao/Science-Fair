@@ -47,7 +47,8 @@ schedule.every(5).minutes.do(motorCon)
       #### [Steps For Volt Sensor Setup](https://kookye.com/2017/06/01/design-a-voltmeter-with-the-raspberry-pi-board-and-voltage-sensor/)
       
   
-      <img src="http://osoyoo.com/wp-content/uploads/2017/04/voltage_bb.jpg" width=40% height=40%>
+      <img src="http://osoyoo.com/wp-content/uploads/2017/04/voltage_bb.jpg" width=40% height=40%> <img src="http://osoyoo.com/wp-content/uploads/2016/08/3-300x300.jpg" width=25% height=25%>
+
   
    
  ``` 
