@@ -77,6 +77,11 @@ schedule.every(5).minutes.do(motorCon)
 schedule.every(5).minutes.do(main)
 ```
 
+### Future:
+- Increase power of stepper motor
+- Add Inclinometer
+- 
+
  
  
   
