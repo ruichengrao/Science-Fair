@@ -80,7 +80,7 @@ schedule.every(5).minutes.do(main)
 ### Future:
 - Increase power of stepper motor
 - Add Inclinometer
-- 
+- Add Calibration Process
 
  
  
