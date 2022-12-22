@@ -1,17 +1,56 @@
-from RpiMotorLib import RpiMotorLib
-import RPi.GPIO as GPIO
+#from RpiMotorLib import RpiMotorLib
+#import RPi.GPIO as GPIO
 import schedule
 from time import sleep, time
 from pyephem_sunpath.sunpath import sunpos
-from datetime import datetime
+from datetime import datetime, date
 from geopy.geocoders import Nominatim
-from datetime import date
 import csv
+from bs4 import BeautifulSoup
+import requests
+from tkinter import *
+import tkinter.messagebox
+  
 
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
 #getting lon/lat 
 geolocator = Nominatim(user_agent="Solar Tracker")
-location = geolocator.geocode("201 Walt Banks Rd, Peachtree City, GA 30269")
+address = input("Type the Nearest Address to Panel:")
+cityLst = address.split(",")
+city = (cityLst[1])
+
+def weather(city):
+    city=city.replace(" ","+")
+    res = requests.get(f'https://www.google.com/search?q={city}&oq={city}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',headers=headers)
+    soup = BeautifulSoup(res.text,'html.parser')  
+    location1 = soup.select('#wob_loc')[0].getText().strip()
+    time = soup.select('#wob_dts')[0].getText().strip()  
+    global info     
+    info = soup.select('#wob_dc')[0].getText().strip() 
+    weather = soup.select('#wob_tm')[0].getText().strip()
+    print(location1)
+    print(time)
+    print(info)
+    print(weather +"°C") 
+
+
+city = city+ "weather"
+weather(city)
+
+if info == "Cloudy":
+    tkinter.messagebox.showinfo("","Weather is cloudly, enabling sensors.")
+    #USE SENSORSSSSSSSSSSSSSS ADD SENSORSSSSSSSSSSSSSSSSSSSSSSS
+
+
+
+elif info == "Clear":
+    tkinter.messagebox.showinfo("","Weather is clear, enabling sun calculating.")
+
+
+
+
+location = geolocator.geocode(address)
 global lat
 lat = location.latitude
 global lon
