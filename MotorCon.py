@@ -6,55 +6,99 @@ from pyephem_sunpath.sunpath import sunpos
 from datetime import datetime, date
 from geopy.geocoders import Nominatim
 import csv
-from bs4 import BeautifulSoup
-import requests
 from tkinter import *
 import tkinter.messagebox
-  
+from Py_Weather import get_weather
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+
+# Import Module
+from tkinter import *
+ 
+# create root window
+root = Tk()
+ 
+# root window title and dimension
+root.title("MSH Solar Interface")
+# Set geometry(widthxheight)
+root.geometry('450x250')
+
+# adding a label to the root window
+lb0 = Label(root, text = "Weather Determined Solar Tracking")
+lb0.grid()
+lbS = Label(root, text = "")
+lbS.grid()
+
+lbl = Label(root, text = "Nearest Address")
+lbl.grid()
+lb2 = Label(root, text = "City*")
+lb2.grid()
+lb3 = Label(root, text = "State/Proviences/Regions*")
+lb3.grid()
+lb4 = Label(root, text = "Click Finish Calibration when all enter are clicked!")
+lb4.grid()
+# adding Entry Field
+txt = Entry(root, width=10)
+txt.grid(column =1, row =2)
+txt2 = Entry(root, width=10)
+txt2.grid(column =1, row =3)
+txt3 = Entry(root, width=10)
+txt3.grid(column =1, row =4)
+ 
+
+def Close():
+    root.destroy()
+
+# function to display user text when
+# button is clicked
+def clicked():
+    global nearestAddress, City, State
+    nearestAddress = txt.get()
+    City = txt2.get()
+    State = txt3.get()
+
+ 
+
+exit_button = Button(root, text="Finish Calibration", command=Close)
+exit_button.grid(column=3, row=5) 
+# button widget with red color text inside
+
+btn2 = Button(root, text = "Enter" ,
+             fg = "black", command=clicked)
+btn3 = Button(root, text = "Enter" ,
+             fg = "black", command=clicked)
+btn4 = Button(root, text = "Enter" ,
+             fg = "black", command=clicked, )
+
+# Set Button Grid
+btn2.grid(column=3, row=2)
+btn3.grid(column=3, row=3)
+btn4.grid(column=3, row=4)
+
+
+
+# Execute Tkinter
+root.mainloop()
+#getting the weather to determine to use sensors or algoritm
+
+weather = get_weather(City)
+
+
+if weather == "cloudy":
+    print("Enabling Sensors")
+elif weather == "sunny":
+     print("Enabling Algroithem")
+     pass
 
 #getting lon/lat 
 geolocator = Nominatim(user_agent="Solar Tracker")
-address = input("Type the Nearest Address to Panel:")
-cityLst = address.split(",")
-city = (cityLst[1])
 
-def weather(city):
-    city=city.replace(" ","+")
-    res = requests.get(f'https://www.google.com/search?q={city}&oq={city}&aqs=chrome.0.35i39l2j0l4j46j69i60.6128j1j7&sourceid=chrome&ie=UTF-8',headers=headers)
-    soup = BeautifulSoup(res.text,'html.parser')  
-    location1 = soup.select('#wob_loc')[0].getText().strip()
-    time = soup.select('#wob_dts')[0].getText().strip()  
-    global info     
-    info = soup.select('#wob_dc')[0].getText().strip() 
-    weather = soup.select('#wob_tm')[0].getText().strip()
-    print(location1)
-    print(time)
-    print(info)
-    print(weather +"°C") 
-
-
-city = city+ "weather"
-weather(city)
-
-if info == "Cloudy":
-    tkinter.messagebox.showinfo("","Weather is cloudly, enabling sensors.")
-    #USE SENSORSSSSSSSSSSSSSS ADD SENSORSSSSSSSSSSSSSSSSSSSSSSS
-
-
-
-elif info == "Clear":
-    tkinter.messagebox.showinfo("","Weather is clear, enabling sun calculating.")
-
-
-
-
-location = geolocator.geocode(address)
+location = geolocator.geocode(nearestAddress)
 global lat
 lat = location.latitude
 global lon
 lon = location.longitude
+
+print((lon,lat))
 
 #getting date
 exact_date = datetime.now()
@@ -68,7 +112,6 @@ rounded_azm = round(azm,0)
 
 # csv file name
 filename = "Solar_Tracking.csv"
-#currentRow = 
 # initializing the titles and rows list
 fields = []
 rows = []
